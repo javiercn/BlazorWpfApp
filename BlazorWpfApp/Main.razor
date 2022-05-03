@@ -1,5 +1,14 @@
-﻿<h3>Main</h3>
+﻿@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider Provider
+<h3>Main</h3>
+
+<button onclick="LogIn">Log in</button>
 
 @code {
-
+    public async Task LogIn()
+    {
+        if(Provider is ExternalAuthenticationStateProvider external)
+        {
+            await external.LogInAsync();
+        }
+    }
 }
